@@ -36,6 +36,10 @@ def showLogin():
 
 @app.route('/fbconnect', methods=['POST'])
 def fbconnect():
+    """
+    Gathers data from Facebook Sign In API and
+    places it inside a session variable.
+    """
     if request.args.get('state') != login_session['state']:
         response = make_response(json.dumps('Invalid state parameter.'), 401)
         response.headers['Content-Type'] = 'application/json'
@@ -98,6 +102,10 @@ def fbconnect():
 
 @app.route('/fbdisconnect')
 def fbdisconnect():
+    """
+    Remove the data from Facebook Sign In API and
+    remove the access token to logout the user.
+    """
     facebook_id = login_session['facebook_id']
     # The access token must me included to successfully logout
     access_token = login_session['access_token']
@@ -133,6 +141,9 @@ def getUserID(email):
 # JSON APIs to view Dealership Information
 @app.route('/dealer/<int:dealer_id>/cars/JSON')
 def dealerCarsJSON(dealer_id):
+    """
+    Returns JSON for all the cars of a particular dealer.
+    """
     dealer = session.query(Dealership).filter_by(id=dealer_id).one()
     cars = session.query(Car).filter_by(
         dealer_id=dealer_id).all()
@@ -141,12 +152,18 @@ def dealerCarsJSON(dealer_id):
 
 @app.route('/dealer/<int:dealer_id>/cars/<int:collection_id>/JSON')
 def carJSON(dealer_id, collection_id):
+    """
+     Returns JSON for a particular car.
+     """
     oneCar = session.query(Car).filter_by(id=collection_id).one()
     return jsonify(oneCar=oneCar.serialize)
 
 
 @app.route('/dealer/JSON')
 def dealersJSON():
+    """
+    Returns JSON for all the dealers.
+    """
     dealers = session.query(Dealership).all()
     return jsonify(dealers=[r.serialize for r in dealers])
 
@@ -155,6 +172,10 @@ def dealersJSON():
 @app.route('/')
 @app.route('/dealer/')
 def showDealerships():
+    """
+    Returns all of the dealerships in HTML template
+    based on if the user is logged in.
+    """
     dealers = session.query(Dealership).order_by(asc(Dealership.name))
     if 'username' not in login_session:
         return render_template('publicdealers.html', dealers=dealers)
@@ -165,6 +186,10 @@ def showDealerships():
 # Create a new dealer
 @app.route('/dealer/new/', methods=['GET', 'POST'])
 def newDealership():
+    """
+    Returns an HTML form to add a new dealership and adds
+    a new dealership to the database if the form is submitted.
+    """
     if 'username' not in login_session:
         return redirect('/login')
     if request.method == 'POST':
@@ -183,6 +208,10 @@ def newDealership():
 # Edit a dealer
 @app.route('/dealer/<int:dealer_id>/edit/', methods=['GET', 'POST'])
 def editDealership(dealer_id):
+    """
+    Returns an HTML form to edit a dealership and updates
+    the dealership in the database if the form is submitted.
+    """
     editedDealership = session.query(
         Dealership).filter_by(id=dealer_id).one()
     if 'username' not in login_session:
@@ -205,6 +234,10 @@ def editDealership(dealer_id):
 # Delete a dealer
 @app.route('/dealer/<int:dealer_id>/delete/', methods=['GET', 'POST'])
 def deleteDealership(dealer_id):
+    """
+    Returns an HTML form to delete a dealership and removes
+    the dealership from the database if the form is submitted.
+    """
     dealerToDelete = session.query(
         Dealership).filter_by(id=dealer_id).one()
     if 'username' not in login_session:
@@ -224,6 +257,10 @@ def deleteDealership(dealer_id):
 @app.route('/dealer/<int:dealer_id>/')
 @app.route('/dealer/<int:dealer_id>/cars/')
 def showCars(dealer_id):
+    """
+    Returns all of the cars belonging to a dealership
+    in the HTML template based on if the user is logged in.
+    """
     dealer = session.query(Dealership).filter_by(id=dealer_id).one()
     creator = getUserInfo(dealer.user_id)
     cars = session.query(Car).filter_by(
@@ -239,6 +276,10 @@ def showCars(dealer_id):
 # Create a new car
 @app.route('/dealer/<int:dealer_id>/cars/new/', methods=['GET', 'POST'])
 def newCar(dealer_id):
+    """
+    Returns an HTML form to add a car and adds a
+    new car to the database if the form is submitted.
+    """
     if 'username' not in login_session:
         return redirect('/login')
     dealer = session.query(Dealership).filter_by(id=dealer_id).one()
@@ -263,6 +304,10 @@ def newCar(dealer_id):
 @app.route('/dealer/<int:dealer_id>/cars/<int:collection_id>/edit',
            methods=['GET', 'POST'])
 def editCar(dealer_id, collection_id):
+    """
+    Returns an HTML form to edit a car and updates
+    the car in the database if the form is submitted.
+    """
     if 'username' not in login_session:
         return redirect('/login')
     editedCar = session.query(Car).filter_by(id=collection_id).one()
@@ -297,6 +342,10 @@ def editCar(dealer_id, collection_id):
 @app.route('/dealer/<int:dealer_id>/cars/<int:collection_id>/delete',
            methods=['GET', 'POST'])
 def deleteCar(dealer_id, collection_id):
+    """
+    Returns an HTML form to delete a car and removes
+    the car from the database if the form is submitted.
+    """
     if 'username' not in login_session:
         return redirect('/login')
     dealer = session.query(Dealership).filter_by(id=dealer_id).one()
