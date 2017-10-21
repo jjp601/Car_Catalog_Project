@@ -40,7 +40,7 @@ Vagrant is the software that configures the VM and lets you share files between 
 1. From within the Vagrant folder you downloaded on to your machine use the command  `vagrant up` to set up the Virtual Machine.
 2. Use `vagrant ssh` to log into your Virtual Machine.
 3. Navigate into the Vagrant directory using `cd /vagrant`
-4. From the terminal run `git clone https://github.com/jjp601/Car-Catalog-Project catalog`. This will provide you with all of the source code and files to get the Flask application up and running.
+4. From the terminal run `git clone https://github.com/jjp601/Car_Catalog_Project catalog`. This will provide you with all of the source code and files to get the Flask application up and running.
 5. From within the catalog directory please ensure the directory has a static folder with the styling and image files, a templates folder with all html template files, a **client_secrets.json**, a **db_setup.py**, a **cars.py**, and a **app.py** file.
 6. Run `python db_setup.py` to initialize the database.
 7. Next, run `python cars.py` to populate the database.
