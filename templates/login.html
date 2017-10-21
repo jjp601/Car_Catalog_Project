@@ -1,0 +1,101 @@
+<head>
+    <link rel="stylesheet" type='text/css' href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='login.css') }}">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+</head>
+  
+  <body>  
+      <div class="site-wrapper">
+          
+        <div class="site-wrapper-inner">
+  
+          <div class="cover-container">
+  
+            <div class="masthead clearfix">
+              <div class="inner">
+                <h3 class="masthead-brand">Car Catalog</h3>
+                <nav>
+                  <ul class="nav masthead-nav">
+                    <li class="active"><a href="{{url_for('showLogin')}}">Login</a></li>
+                    <li><a href="{{url_for('showDealerships')}}">Dealerships</a></li>
+                  </ul>
+                </nav>
+              </div>
+            </div>
+  
+            <div class="inner cover">
+              <h1 class="cover-heading">Get Started with Car Catalog!</h1>
+              <p class="lead">Sign in with your Facebook account.</p>
+                <fb:login-button scope="public_profile,email" onlogin="sendTokenToServer();">
+                  <a href='javascript:sendTokenToServer()'>Login with Facebook</a>
+                </fb:login-button>
+              <div id="result"></div>
+            </div>
+  
+            <div class="mastfoot">
+              <div class="inner">
+                <p>&copy; 2017 Jon Powell.</p>
+              </div>
+            </div>
+          </div>
+        </div>    
+      </div>
+          
+
+  <!--FACEBOOK SIGN IN -->
+  <script>
+    window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '486162865086731',
+      cookie     : true,  // enable cookies to allow the server to access 
+                          // the session
+      xfbml      : true,  // parse social plugins on this page
+      version    : 'v2.8' // use version 2.8
+    });
+  
+    };
+  
+    // Load the SDK asynchronously
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/sdk.js";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+  
+    // Here we run a very simple test of the Graph API after login is
+    // successful.  See statusChangeCallback() for when this call is made.
+    function sendTokenToServer() {
+      var access_token = FB.getAuthResponse()['accessToken'];
+      console.log(access_token)
+      console.log('Welcome!  Fetching your information.... ');
+      FB.api('/me', function(response) {
+        console.log('Successful login for: ' + response.name);
+       $.ajax({
+        type: 'POST',
+        url: '/fbconnect?state={{STATE}}',
+        processData: false,
+        data: access_token,
+        contentType: 'application/octet-stream; charset=utf-8',
+        success: function(result) {
+          // Handle or verify the server response if necessary.
+          if (result) {
+            $('#result').html('Login Successful!</br>'+ result + '</br>Redirecting...')
+           setTimeout(function() {
+            window.location.href = "/dealer";
+           }, 1000);
+            
+        } else {
+          $('#result').html('Failed to make a server-side call. Check your configuration and console.');
+           }
+        } 
+    });
+      });
+    }
+  </script>
+  
+    </body>
+  
+  </html>
+  

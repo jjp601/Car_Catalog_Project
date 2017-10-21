@@ -1,0 +1,249 @@
+/* Base styles */
+
+* {
+	font-family: "Helvetica Neue Bold", Roboto, Helvetica, Arial, sans-serif;
+	font-weight: 700;
+}
+
+body {
+	background-color: #EAECEE;
+}
+
+h1 {
+	font-family: "Helvetica Neue Light", Roboto, Helvetica, Arial, sans-serif;
+	font-size: 50px;
+	color: #51453B;
+	line-height: 60px;
+	font-weight: 300;
+}
+
+h2 {
+	font-size: 28px;
+	color: #F14D16;
+	line-height: 29px;
+	margin: 30px 20px;
+}
+
+h3 {
+	font-size: 20px;
+	color: #4A4A4A;
+	line-height: 23px;
+}
+ p {
+ 	font-family: "Helvetica Neue", Roboto, Helvetica, Arial, sans-serif;
+ 	font-size: 16px;
+ 	color: #FFF;
+ 	line-height: 24px;
+ 	font-weight: 400;
+ }
+
+ strong {
+ 	font-size: 16px;
+ 	color: #FFF;
+ 	line-height: 24px;
+ }
+
+ a {
+ 	font-size: 15px;
+ 	color: #F14D16;
+	line-height: 17px;
+	padding-bottom: 0px; 
+ }
+
+ a:hover {
+	 color: #FFF;
+	 text-decoration: none;
+ }
+
+.padding-top {
+	padding-top: 30px;
+}
+.padding-bottom {
+	padding-bottom: 30px;
+}
+.margin-right {
+	margin-right: 30px;
+}
+.padding-none {
+	padding: 0;
+}
+
+ /* Navbar styles */
+ .navbar-inverse {
+    background-color: #222;
+	border-color: #222;
+	box-shadow: 0px 2px 5px 1px rgba(191,191,191,0.5);
+}
+
+
+/* Jumbotron styles */
+.jumbotron {
+	padding-top: 118px;
+    margin-bottom: 0px;
+	background-color: #eee;
+	background: url("car-catalog.jpeg") no-repeat fixed center left;
+	color: #FFF; 
+}
+
+.jumbotron .creator img {
+	max-width: 120px;
+	margin-top: 10px;
+	border-radius: 50%;
+}
+.jumbotron .creator figcaption {
+	font-size: 20px;
+	color: #FFF;
+	font-weight: 400;
+	margin-top: 10px;
+}
+
+/* Button styles */
+.btn {
+	padding: 15px;
+	margin: 20px 0 0 20px;
+	border-color: #F14D16;
+	border-width: 2px;
+	color: #F14D16;;
+}
+.btn:hover {
+	border-color: #F14D16;
+}
+
+.btn-secondary {
+	padding: 10px 15px;
+	color: #FFF;
+	border-color: #FFF;
+	background-color: rgba(0,0,0,0.5)
+}
+
+.btn-secondary:hover {
+	color: #FFF;
+	background-color: #F14D16;
+	border-color: #F14D16;
+}
+
+.btn-primary {
+	background-color: #FFF;
+}
+
+.btn-primary:hover {
+	background-color: #F14D16;
+}
+
+.btn-default:hover {
+    color: #FFF;
+    background-color: #F14D16;
+}
+
+.btn.delete {
+	border-color: #aaaaaa;
+	color: #aaaaaa;
+	margin-left: 20px;
+}
+.btn.delete:hover {
+	border-color: red;
+	color: red;
+	background-color: #FFF;
+}
+
+.btn.shop {
+	font-size: 16px;
+}
+
+.glyphicon {
+	margin-right: 10px;
+}
+
+/* Dealership styles */
+
+.list-group {
+	margin: 20px;
+}
+
+.top-collection {
+	padding-top: 30px;
+	padding-bottom: 30px;
+}
+.top-collection p {
+	margin-bottom: 0;
+	line-height: 16px;
+}
+.top-collection a {
+	margin-bottom: 0;
+	line-height: 16px;
+	font-size: 16px;
+	color: #7B7573;
+	font-weight: 400;
+}
+
+ .dealer-list {
+	border: 2px solid #FFF;
+	background-color: #FFF;
+	border-radius: 4px;
+	box-shadow: 0px 2px 3px 1px rgba(191,191,191,0.5); 
+	padding: 20px;
+	margin-bottom: 20px; 
+ }
+ .dealer-list:hover {
+	box-shadow: 0px 2px 3px 1px rgba(241,77,22,0.7);
+ 	padding: 20px;
+}
+
+/* Car styles */
+
+.thumbnail {
+    background-color: #FFF;
+    border: 2px solid #FFF;
+	box-shadow: 0px 2px 3px 1px rgba(191,191,191,0.5);
+}
+
+.thumbnail img {
+	height: 16em;
+	border-radius: 4px;
+}
+
+.car-item {
+	background: #FFF;
+}
+
+.car-item p {
+	color: #4A4A4A;	
+}
+
+.car-price {
+	font-weight: 700;
+}
+
+/* User Info styles */
+
+.creator {
+	padding-right: 20px;
+}
+
+.creator img {
+	max-width: 60px;
+	border-radius: 50%;
+}
+.creator figcaption {
+	font-size: 16px;
+	color: #7B7573;
+	font-weight: 400;
+	margin-top: 10px;
+}
+
+/* Flash Message styles */
+
+.flash {
+	background-color: #70DA8B;
+	width:100%;
+	text-decoration: none;
+	color: #FFF;
+}
+
+.flash li {
+	list-style-type: none;
+	text-align: center;
+	padding: 10px 10px;
+	border-radius: 4px;
+
+}

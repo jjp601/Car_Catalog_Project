@@ -1,0 +1,85 @@
+{% extends "layout.html" %}
+{% block content %}
+
+	<div class="jumbotron">
+			<div class="container">
+					<h1>{{ dealer.name }}
+						<figure class="creator">
+							<img src="{{creator.picture}}">
+							<figcaption>Owner: {{ creator.name }}</figcaption>
+						</figure>
+					</h1>
+			</div>
+	</div>
+
+	<div class = 'flash'>
+		{% with messages = get_flashed_messages() %}
+		{% if messages %}
+			
+			<ul>
+			{% for message in messages %}
+				<li> <strong> {{ message }} </strong> </li>
+			{% endfor %}
+			</ul>
+			{% endif %}
+		{% endwith %}
+
+	</div>
+	<div class="row padding-top padding-bottom">
+		<div class="col-md-2"></div>
+		<div class="col-md-10 padding-none">
+			<a href="{{url_for('editDealership', dealer_id = dealer.id )}}">
+				<button class="btn btn-default" id="new-car-item">
+					<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>Edit Dealership
+				</button>
+			</a>
+			<a href="{{url_for('newCar', dealer_id = dealer.id )}}">
+				<button class="btn btn-default" id="new-car-item">
+					<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>Add Car
+				</button>
+			</a>
+						<a href="{{url_for('deleteDealership', dealer_id = dealer.id )}}">
+				<button class="btn btn-default delete" id="delete-dealer">
+					<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>Delete Dealership
+				</button>
+			</a>
+		</div>
+		<div class="col-md-7"></div>
+	</div>
+	
+	{% if cars !=[] %}	
+	<div class="row">
+			<div class="col-md-2"></div>
+			<div class="col-md-8">
+				<h2>Collection</h2>
+					{% for car in cars %}
+						<div class="col-md-4 col-sm-6">
+							<div class="thumbnail">
+							<img src="{{car.image}}" alt="{{car.model}}">
+								<div class="caption car-item">
+									<h3>Make/Model: {{car.make}} {{car.model}}</h3>
+									<p class="car-price">Price: ${{car.price}}</p>
+									<p>Miles: {{car.mileage}}</p>
+									<p>Year: {{car.year}}</p>
+									<p>Color: {{car.color}}</p>
+									<p>
+										<a href="{{url_for('editCar', dealer_id = dealer.id, collection_id = car.id )}}">
+											<button class="btn btn-default">
+												<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>Edit Car
+											</button>
+										</a> 
+										<a href="{{url_for('deleteCar', dealer_id = dealer.id, collection_id = car.id)}}">
+											<button class="btn btn-default delete">
+												<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>Delete Car
+											</button>
+										</a> 
+									</p>
+								</div>
+							</div>
+						</div>	
+					{% endfor %}
+			</div>
+			<div class="col-md-2"></div>
+		</div>
+	{% endif %}
+{% endblock %}

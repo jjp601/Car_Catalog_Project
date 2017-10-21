@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+{% block content %}
+
+	<div class="jumbotron">
+		<div class="container">
+				<h1>{{ dealer.name }}
+					<figure class="creator">
+						<img src="{{creator.picture}}">
+						<figcaption>Owner: {{ creator.name }}</figcaption>
+					</figure>
+				</h1>
+			<p><a class="btn btn-secondary btn-lg" href="{{url_for('showLogin')}}" role="button">Sign Up! &raquo;</a></p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			{% with messages = get_flashed_messages() %}
+				{% if messages %}
+					<ul>
+						{% for message in messages %}
+							 <li> <strong> {{ message }} </strong> </li>
+						{% endfor %}
+					</ul>
+				{% endif %}
+			{% endwith %}
+		</div>
+	</div>
+	{% if cars !=[] %}	
+		<div class="row">
+			<div class="col-md-2"></div>
+			<div class="col-md-8">
+				<h2>Collection</h2>
+					{% for car in cars %}
+						<div class="col-md-4 col-sm-6">
+							<div class="thumbnail">
+							<img src="{{car.image}}" alt="{{car.model}}">
+								<div class="caption car-item">
+									<h3>Make/Model: {{car.make}} {{car.model}}</h3>
+									<p class="car-price">Price: {{car.price}}</p>
+									<p>Miles: {{car.mileage}}</p>
+									<p>Year: {{car.year}}</p>
+									<p>Color: {{car.color}}</p>
+									<p><a href="#">
+											<button class="btn btn-default shop">
+												<span class="glyphicon glyphicon-usd" aria-hidden="true"></span>Buy
+											</button>
+										</a> 
+										<a href="#">
+											<button class="btn btn-default shop">
+												<span class="glyphicon glyphicon-transfer" aria-hidden="true"></span>Lease
+											</button>
+										</a>
+									</p>
+								</div>
+							</div>
+						</div>	
+					{% endfor %}
+			</div>
+			<div class="col-md-2"></div>
+		</div>
+	{% endif %}
+{% endblock %}
