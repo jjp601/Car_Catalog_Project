@@ -44,7 +44,7 @@ Vagrant is the software that configures the VM and lets you share files between 
 5. From within the catalog directory please ensure the directory has a static folder with the styling and image files, a templates folder with all html template files, a **client_secrets.json**, a **db_setup.py**, a **cars.py**, and a **app.py** file.
 6. Run `python db_setup.py` to initialize the database.
 7. Next, run `python cars.py` to populate the database.
-8. Run `python app.py` to run the Flask web server. The Car Catalog application can the be viewed in your browser at **http://localhost:5000**.
+8. Run `python app.py` to run the Flask web server. The Car Catalog application can the be viewed in your browser at **http://localhost:8000**.
 9. Once you have the application running you will be able to login using your Facebook account. You can add, edit, and delete your own car dealerships, add, edit, and delete new cars, upload an image with URL and view other dealerships.
 
 ## Future Enhancements
