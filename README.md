@@ -1,6 +1,6 @@
 # Car Catalog Project
 ## Summary
-The Car Catalog Application is my project associated with the Item Catalog project from the Udacity Full-Stack Nanodegree program. The goal of the project was to build a Web application using Flask and SQLAlchemy along with OAuth for authentication and authorization. In this project I wanted to differentiate from other Item Catalog projects by building a unique project that would employ real world application.
+The Car Catalog Application is my project associated with the Item Catalog project from the Udacity Full-Stack Nanodegree program. The goal of the project was to build a Web application using Flask and SQLAlchemy along with OAuth for authentication and authorization. In this project I wanted to differentiate from other Item Catalog projects by building a unique project that would employ real world application. The application has been deployed on an AWS Lightsail instance. You may visit the deployed application [here](http://18.217.35.245)
 
 
 ## Requirements
