@@ -51,6 +51,5 @@ Vagrant is the software that configures the VM and lets you share files between 
 
 Plan to make the following enhancements:
 
-* Add functionality to allow users to upload a photo.
 * Add a path and functionality to allow users to Buy another Dealer's car. (Note: The Buy button currently has no functionality)
 * Add a path and functionality to allow users to Lease another Dealer's car. (Note: The Lease button currently has no functionality)
